@@ -22,17 +22,25 @@ def getCSV():
         driver.find_element_by_id('Model_LoginForm_password').send_keys(config['HRBC']['PASS'])
         driver.find_element_by_id('login-form').submit()
         
-        driver.find_element_by_class_name('ui-button-text-only').click()
+        if len(driver.find_elements_by_class_name('ui-button-text-only')) > 0:
+            driver.find_element_by_class_name('ui-button-text-only').click()
         
-        time.sleep(5)
+        time.sleep(2)
         
         # レポートダウンロード
-        driver.get(config['HRBC']['CSV_1'])
-        driver.get(config['HRBC']['CSV_2'])
-        driver.get(config['HRBC']['CSV_3'])
+        driver.get(config['HRBC']['URL_1'])
+        time.sleep(3)
+        driver.find_element_by_class_name('download').click()
+        
+        driver.get(config['HRBC']['URL_2'])
+        time.sleep(3)
+        driver.find_element_by_class_name('download').click()
+        
+        driver.get(config['HRBC']['URL_3'])
+        time.sleep(3)
+        driver.find_element_by_class_name('download').click()
         
         time.sleep(10)
-
         
     except Exception as e:
         logging.error(traceback.format_exc())

@@ -6,7 +6,7 @@ import util
 import logging
 import traceback
 
-def getCSV():
+def downloadCSV():
     
     config = util.getConfig()
     
@@ -25,19 +25,21 @@ def getCSV():
         if len(driver.find_elements_by_class_name('ui-button-text-only')) > 0:
             driver.find_element_by_class_name('ui-button-text-only').click()
         
-        time.sleep(2)
+        time.sleep(5)
         
         # レポートダウンロード
         driver.get(config['HRBC']['URL_1'])
-        time.sleep(3)
+        time.sleep(5)
         driver.find_element_by_class_name('download').click()
+        time.sleep(3)
         
         driver.get(config['HRBC']['URL_2'])
-        time.sleep(3)
+        time.sleep(5)
         driver.find_element_by_class_name('download').click()
+        time.sleep(3)
         
         driver.get(config['HRBC']['URL_3'])
-        time.sleep(3)
+        time.sleep(5)
         driver.find_element_by_class_name('download').click()
         
         time.sleep(10)

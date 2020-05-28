@@ -39,7 +39,7 @@ def downloadCSV():
         time.sleep(3)
         
         driver.get(config['HRBC']['URL_3'])
-        time.sleep(5)
+        time.sleep(10)
         driver.find_element_by_class_name('download').click()
         
         time.sleep(10)

@@ -10,7 +10,7 @@ def uploadData(data, sheetName):
     gc = prepare(config)
 
     wks = gc.open_by_key(config['GOOGLE']['SPREADSHEET']).worksheet(sheetName)
-    
+    wks.clear()
     wks.update('A1', data)
 
 

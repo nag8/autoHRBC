@@ -23,15 +23,18 @@ def uploadSpreadsheet():
     for file in fList:
         if '受講生フェーズ_' + dateStr in file:
             studentList = getList(config['CSV']['DLPATH'] + file)
+            studentList.insert(0, ['upload成功_' + file])
             
         if '選考プロセス_' + dateStr in file:
             recruitList = getList(config['CSV']['DLPATH'] + file)
+            recruitList.insert(0, ['upload成功_' + file])
             
     for file in fList:
         if '受講生フェーズ（2019年）_' + dateStr in file:
             l = getList(config['CSV']['DLPATH'] + file)
             l.pop(0)
             studentList.extend(l)
+            studentList.insert(0, ['upload成功_' + file])
     
     googleUtil.uploadData(studentList, 'work')
     googleUtil.uploadData(recruitList, 'work2')

@@ -4,12 +4,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 import util
 
-def uploadData(data):
+def uploadData(data, sheetName):
     
     config = util.getConfig()
     gc = prepare(config)
 
-    wks = gc.open_by_key(config['GOOGLE']['SPREADSHEET']).worksheet(config['GOOGLE']['SHEET_NAME'])
+    wks = gc.open_by_key(config['GOOGLE']['SPREADSHEET']).worksheet(sheetName)
     
     wks.update('A1', data)
 
@@ -23,4 +23,4 @@ def prepare(config):
     return gspread.authorize(credentials)
 
 if __name__ == '__main__':
-    uploadData([[1, 2], [3, 4]])
+    uploadData([[1, 2], [3, 4]], 'work')

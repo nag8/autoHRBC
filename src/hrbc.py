@@ -27,17 +27,17 @@ def downloadCSV():
         
         time.sleep(5)
         
-        download(config['HRBC']['URL_1'])
-        download(config['HRBC']['URL_2'])
-        download(config['HRBC']['URL_3'])
-        download(config['HRBC']['URL_4'])
-        download(config['HRBC']['URL_5'])
-        download(config['HRBC']['URL_6'])
-        download(config['HRBC']['URL_7'])
-        download(config['HRBC']['URL_8'])
-        download(config['HRBC']['URL_9'])
-        download(config['HRBC']['URL_10'])
-        download(config['HRBC']['URL_11'])
+        download(driver,config['HRBC']['URL_1'])
+        download(driver,config['HRBC']['URL_2'])
+        download(driver,config['HRBC']['URL_3'])
+        download(driver,config['HRBC']['URL_4'])
+        download(driver,config['HRBC']['URL_5'])
+        download(driver,config['HRBC']['URL_6'])
+        download(driver,config['HRBC']['URL_7'])
+        download(driver,config['HRBC']['URL_8'])
+        download(driver,config['HRBC']['URL_9'])
+        download(driver,config['HRBC']['URL_10'])
+        download(driver,config['HRBC']['URL_11'])
         
     except Exception as e:
         logging.error(traceback.format_exc())
@@ -46,7 +46,7 @@ def downloadCSV():
         driver.quit()
 
 # レポートダウンロード
-def download(url):
+def download(driver,url):
     driver.get(url)
     time.sleep(10)
     driver.find_element_by_class_name('download').click()

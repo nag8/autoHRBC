@@ -11,7 +11,7 @@ def downloadCSV():
     config = util.getConfig()
     
     options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(options=options,executable_path=config['CHROME']['PATH'])
 
     try:
         driver.get('https://hrbc-jp.porterscloud.com/common/navigation')

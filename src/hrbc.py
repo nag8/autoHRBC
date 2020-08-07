@@ -37,6 +37,7 @@ def downloadCSV():
         download(config['HRBC']['URL_8'])
         download(config['HRBC']['URL_9'])
         download(config['HRBC']['URL_10'])
+        download(config['HRBC']['URL_11'])
         
     except Exception as e:
         logging.error(traceback.format_exc())

@@ -11,6 +11,7 @@ def uploadSpreadsheet(dlQueList):
     
     config = util.getConfig()
     dateStr = datetime.date.today().strftime("%Y-%m-%d")
+    logList = []
 
     try:
         
@@ -26,13 +27,16 @@ def uploadSpreadsheet(dlQueList):
                 if (dlQue.fileName + dateStr) in file:
                     list = getList(config['CSV']['DLPATH'] + file)
                     
-                    if dlQue.addFlg:
+                    if dlQue.addFlg == "TRUE":
                         list.pop(0)
                     
                     googleUtil.uploadData(list, dlQue.sheetName)
                     logList.insert(0, ['upload成功_' + file])
     
+        googleUtil.uploadData(logList, config['GOOGLE']['SHEET_LOG'])
+
     except Exception as e:
+        print(e)
         logList = [['error! ' + dateStr]]
         googleUtil.uploadData(logList, config['GOOGLE']['SHEET_LOG'])
     

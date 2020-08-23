@@ -45,3 +45,4 @@ def download(driver,url):
     time.sleep(20)
     driver.find_element_by_class_name('download').click()
     time.sleep(10)
+ 

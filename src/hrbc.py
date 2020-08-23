@@ -3,12 +3,15 @@ from selenium.webdriver.common.keys import Keys
 
 import time
 import util
+import googleUtil
 import logging
 import traceback
 
-def downloadCSV():
+def downloadCSV(dlQueList):
     
     config = util.getConfig()
+    
+    
     
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(options=options,executable_path=config['CHROME']['PATH'])
@@ -27,17 +30,8 @@ def downloadCSV():
         
         time.sleep(5)
         
-        download(driver,config['HRBC']['URL_1'])
-        download(driver,config['HRBC']['URL_2'])
-        download(driver,config['HRBC']['URL_3'])
-        download(driver,config['HRBC']['URL_4'])
-        download(driver,config['HRBC']['URL_5'])
-        download(driver,config['HRBC']['URL_6'])
-        download(driver,config['HRBC']['URL_7'])
-        download(driver,config['HRBC']['URL_8'])
-        download(driver,config['HRBC']['URL_9'])
-        download(driver,config['HRBC']['URL_10'])
-        download(driver,config['HRBC']['URL_11'])
+        for dlQue in dlQueList:
+            download(driver, dlQue.url)
         
     except Exception as e:
         logging.error(traceback.format_exc())
@@ -51,3 +45,4 @@ def download(driver,url):
     time.sleep(20)
     driver.find_element_by_class_name('download').click()
     time.sleep(10)
+ 

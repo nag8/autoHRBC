@@ -42,7 +42,7 @@ def downloadCSV(dlQueList):
 # レポートダウンロード
 def download(driver,url):
     driver.get(url)
-    time.sleep(20)
+    time.sleep(30)
     driver.find_element_by_class_name('download').click()
-    time.sleep(10)
+    time.sleep(20)
  

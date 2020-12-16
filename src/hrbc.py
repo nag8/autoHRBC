@@ -27,7 +27,7 @@ def downloadCSV(dlQueList):
         
         if len(driver.find_elements_by_class_name('ui-button-text-only')) > 0:
             driver.find_element_by_class_name('ui-button-text-only').click()
-        
+         
         time.sleep(5)
         
         for dlQue in dlQueList:

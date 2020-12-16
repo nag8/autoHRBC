@@ -19,7 +19,7 @@ def uploadSpreadsheet(dlQueList):
         fList = [os.path.basename(r) for r in fList]
         
         for dlQue in dlQueList:
-            googleUtil.clear(dlQue.sheetName)
+            googleUtil.clear(dlQue.sheetId, "data")
         
         
         for dlQue in dlQueList:
@@ -30,10 +30,10 @@ def uploadSpreadsheet(dlQueList):
                     if dlQue.addFlg == "TRUE":
                         list.pop(0)
                     
-                    googleUtil.uploadData(list, dlQue.sheetName)
+                    googleUtil.uploadData(list, dlQue.sheetId, "data")
                     logList.insert(0, ['upload成功_' + file])
     
-        googleUtil.uploadData(logList, config['GOOGLE']['SHEET_LOG'])
+        googleUtil.uploadData(logList, config['GOOGLE']['SPREADSHEET'], config['GOOGLE']['SHEET_LOG'])
 
     except Exception as e:
         print(e)

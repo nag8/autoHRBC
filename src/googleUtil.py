@@ -20,24 +20,24 @@ def readConfigSheet():
         
     return outList
 
-def uploadData(data, sheetName):
+def uploadData(data, sheetId, sheetName):
     
     config = util.getConfig()
     gc = prepare(config)
 
-    sh = gc.open_by_key(config['GOOGLE']['SPREADSHEET'])
+    sh = gc.open_by_key(sheetId)
     sh.values_append(sheetName,
         {'valueInputOption': 'USER_ENTERED'},
         {'values': data}
     )
 
     
-def clear(sheetName):
+def clear(sheetId, sheetName):
     
     config = util.getConfig()
     gc = prepare(config)
 
-    wks = gc.open_by_key(config['GOOGLE']['SPREADSHEET']).worksheet(sheetName)
+    wks = gc.open_by_key(sheetId).worksheet(sheetName)
     wks.clear()
 
 

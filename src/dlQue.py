@@ -1,6 +1,6 @@
 class DlQue:
-    def __init__(self, url, fileName, sheetName, addFlg):
+    def __init__(self, url, fileName, sheetId, addFlg):
         self.url = url
         self.fileName = fileName
-        self.sheetName = sheetName
+        self.sheetId = sheetId
         self.addFlg = addFlg
